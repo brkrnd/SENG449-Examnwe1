@@ -11,11 +11,17 @@
     android:background="@color/bg">
 
     <TextView
-        android:id="@+id/currentSongText"
+        android:id="@+id/currentSongTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Current Song:"
         android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/userLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user Location"
+        android:textStyle="italic"/>
 
     <LinearLayout
         android:layout_width="match_parent"
