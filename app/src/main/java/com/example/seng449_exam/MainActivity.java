@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         TextView currentSongTextView = findViewById(R.id.currentSongTextView);
 
 
-
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(5000);
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getCurrentLocation();
-                startMusicService();
+                startMusicService1();
                 currentSongTextView.setText("Song 1");
             }
         });
@@ -78,32 +77,38 @@ public class MainActivity extends AppCompatActivity {
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stopMusicService();
+                stopMusicService1();
             }
         });
 
         nextSongButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startMusicService2();
             }
         });
 
         previousSongButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startMusicService1();
             }
         });
 
 
     }
-    private void startMusicService() {
+
+    private void startMusicService2() {
+        Intent song2Service = new Intent(this,MusicService2.class);
+        startService(song2Service);
+    }
+
+    private void startMusicService1() {
         Intent song1Service = new Intent(this,MusicService.class);
         startService(song1Service);
     }
 
-    private void stopMusicService() {
+    private void stopMusicService1() {
         Intent song1StopService = new Intent(this,MusicService.class);
         stopService(song1StopService);
     }
@@ -139,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String getCurrentLocation() {
+    private void getCurrentLocation() {
         StringBuilder userLocationText = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -177,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
-        return userLocationText.toString();
+        userLocationText.toString();
     }
 
     private void turnOnGPS() {
