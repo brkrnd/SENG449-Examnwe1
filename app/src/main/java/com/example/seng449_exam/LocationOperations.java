@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.concurrent.Executor;
 
-public class LocationManager {
+public class LocationOperations {
+
+
 
 }
